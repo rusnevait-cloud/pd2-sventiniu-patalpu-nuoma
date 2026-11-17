@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> – VenueBook</title>
+</head>
+<body>
+<nav>
+  <a href="/">Pradžia</a> |
+  <a href="/venues">Erdvės</a>
+  <% if (currentUser) { %>
+    <% if (currentUser.role === 'owner') { %> | <a href="/owner/venues">Mano erdvės</a><% } %>
+    <% if (currentUser.role === 'admin') { %> | <a href="/admin">Admin</a> | <a href="/admin/users">Naudotojai</a> | <a href="/admin/venues">Visos erdvės</a><% } %>
+    | <%= currentUser.name %> (<%= currentUser.role %>)
+    <form method="post" action="/logout" style="display:inline">
+      <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+      <button type="submit">Atsijungti</button>
+    </form>
+  <% } else { %>
+    | <a href="/login">Prisijungti</a> | <a href="/register">Registruotis</a>
+  <% } %>
+</nav>
+<hr>
+<% if (flash) { %>
+  <p role="status"><strong><%= flash.type === 'ok' ? '✔' : '✖' %> <%= flash.text %></strong></p>
+<% } %>

@@ -147,3 +147,9 @@ vite.config.ts.timestamp-*
 
 # Turbo Repo
 .turbo
+
+
+# VenueBook local database
+data.sqlite
+data.sqlite-wal
+data.sqlite-shm

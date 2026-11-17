@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<h1>Šalinti erdvę</h1>
+<p>Ar tikrai norite negrįžtamai pašalinti erdvę <strong><%= venue.name %></strong>?</p>
+<% if (bookings > 0) { %>
+  <p><strong>Ši erdvė turi <%= bookings %> rezervacij(ų), todėl jos pašalinti nepavyks.</strong></p>
+<% } else { %>
+  <p>Kartu bus pašalintos erdvės nuotraukos, patogumų nuorodos ir užimtumo blokavimai.</p>
+<% } %>
+<form method="post" action="/owner/venues/<%= venue.id %>/delete">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <input type="hidden" name="confirm" value="yes">
+  <button type="submit">Taip, šalinti</button> <a href="<%= backUrl %>">Atšaukti</a>
+</form>
+<%- include('../partials/footer') %>

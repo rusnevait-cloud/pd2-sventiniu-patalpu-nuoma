@@ -1,0 +1,8 @@
+<%- include('../partials/header') %>
+<h1>Administravimas</h1>
+<ul>
+  <li>Naudotojų: <%= stats.users %> – <a href="/admin/users">valdyti</a></li>
+  <li>Erdvių: <%= stats.venues %> (laukia patvirtinimo: <strong><%= stats.pending %></strong>) – <a href="/admin/venues">valdyti</a></li>
+  <li>Rezervacijų: <%= stats.bookings %></li>
+</ul>
+<%- include('../partials/footer') %>
