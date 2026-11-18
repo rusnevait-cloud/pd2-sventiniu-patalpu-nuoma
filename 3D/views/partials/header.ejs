@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= title %> – VenueBook</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a href="/" class="brand">
+      <span class="brand-mark">V</span>
+      <span class="brand-name">VenueBook</span>
+    </a>
+    <nav class="main-nav" aria-label="Pagrindinė navigacija">
+      <a href="/">Pradžia</a>
+      <a href="/venues">Erdvės</a>
+      <% if (currentUser) { %>
+        <% if (currentUser.role === 'owner') { %><a href="/owner/venues">Mano erdvės</a><% } %>
+        <% if (currentUser.role === 'admin') { %>
+          <a href="/admin">Admin</a>
+          <a href="/admin/users">Naudotojai</a>
+          <a href="/admin/venues">Visos erdvės</a>
+        <% } %>
+        <span class="user-info"><%= currentUser.name %> (<%= currentUser.role %>)</span>
+        <form method="post" action="/logout" class="inline-form">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button type="submit" class="btn btn-secondary">Atsijungti</button>
+        </form>
+      <% } else { %>
+        <a href="/login">Prisijungti</a>
+        <a href="/register" class="btn btn-primary">Registruotis</a>
+      <% } %>
+    </nav>
+  </div>
+</header>
+<main class="container">
+<% if (flash) { %>
+  <p class="flash <%= flash.type === 'ok' ? 'flash-ok' : 'flash-error' %>" role="status">
+    <strong><%= flash.type === 'ok' ? '✔' : '✖' %> <%= flash.text %></strong>
+  </p>
+<% } %>

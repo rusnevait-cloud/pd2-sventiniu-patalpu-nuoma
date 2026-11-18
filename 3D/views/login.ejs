@@ -1,0 +1,10 @@
+<%- include('partials/header') %>
+<h1>Prisijungimas</h1>
+<% if (error) { %><p role="alert"><strong><%= error %></strong></p><% } %>
+<form method="post" action="/login">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <p><label>El. paštas<br><input type="email" name="email" value="<%= email %>" required maxlength="254"></label></p>
+  <p><label>Slaptažodis<br><input type="password" name="password" required maxlength="128"></label></p>
+  <button type="submit">Prisijungti</button>
+</form>
+<%- include('partials/footer') %>

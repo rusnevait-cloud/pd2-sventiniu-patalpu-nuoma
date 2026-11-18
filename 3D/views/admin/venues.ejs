@@ -1,0 +1,24 @@
+<%- include('../partials/header') %>
+<h1>Visos erdvės</h1>
+<table border="1" cellpadding="4">
+  <tr><th>ID</th><th>Pavadinimas</th><th>Savininkas</th><th>Miestas</th><th>Kategorija</th><th>Būsena</th><th>Rezervacijos</th><th>Veiksmai</th></tr>
+  <% venues.forEach(v => { %>
+  <tr>
+    <td><%= v.id %></td>
+    <td><a href="/venues/<%= v.id %>"><%= v.name %></a></td>
+    <td><%= v.owner_name %></td><td><%= v.city %></td><td><%= v.category_name %></td>
+    <td><%= v.is_published ? 'Publikuota' : 'Laukia patvirtinimo' %></td>
+    <td><%= v.booking_count %></td>
+    <td>
+      <form method="post" action="/admin/venues/<%= v.id %>/publish" style="display:inline">
+        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+        <input type="hidden" name="publish" value="<%= v.is_published ? '0' : '1' %>">
+        <button type="submit"><%= v.is_published ? 'Paslėpti' : 'Patvirtinti' %></button>
+      </form>
+      <a href="/owner/venues/<%= v.id %>/edit">Redaguoti</a> |
+      <a href="/owner/venues/<%= v.id %>/delete">Šalinti</a>
+    </td>
+  </tr>
+  <% }) %>
+</table>
+<%- include('../partials/footer') %>

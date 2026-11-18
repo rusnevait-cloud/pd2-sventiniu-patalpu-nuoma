@@ -1,0 +1,30 @@
+<%- include('../partials/header') %>
+<h1><%= title %></h1>
+<form method="post" action="<%= action %>">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <p><label>Pavadinimas<br><input name="name" value="<%= values.name %>" required minlength="3" maxlength="120"></label>
+    <% if (errors.name) { %><br><strong><%= errors.name %></strong><% } %></p>
+  <p><label>Kategorija<br>
+    <select name="category_id" required>
+      <option value="">– pasirinkite –</option>
+      <% categories.forEach(c => { %><option value="<%= c.id %>" <%= String(values.category_id) === String(c.id) ? 'selected' : '' %>><%= c.name %></option><% }) %>
+    </select></label>
+    <% if (errors.category_id) { %><br><strong><%= errors.category_id %></strong><% } %></p>
+  <p><label>Miestas<br><input name="city" value="<%= values.city %>" required maxlength="60"></label>
+    <% if (errors.city) { %><br><strong><%= errors.city %></strong><% } %></p>
+  <p><label>Talpa (žmonių)<br><input type="number" name="capacity" value="<%= values.capacity %>" required min="1" max="10000"></label>
+    <% if (errors.capacity) { %><br><strong><%= errors.capacity %></strong><% } %></p>
+  <p><label>Kaina už valandą (€)<br><input name="price" value="<%= values.price %>" required inputmode="decimal"></label>
+    <% if (errors.price) { %><br><strong><%= errors.price %></strong><% } %></p>
+  <p><label>Aprašymas<br><textarea name="description" rows="5" cols="50" maxlength="2000"><%= values.description %></textarea></label>
+    <% if (errors.description) { %><br><strong><%= errors.description %></strong><% } %></p>
+  <fieldset>
+    <legend>Patogumai</legend>
+    <% amenities.forEach(a => { %>
+      <label><input type="checkbox" name="amenities" value="<%= a.id %>" <%= values.amenities.includes(String(a.id)) ? 'checked' : '' %>> <%= a.name %></label><br>
+    <% }) %>
+    <% if (errors.amenities) { %><strong><%= errors.amenities %></strong><% } %>
+  </fieldset>
+  <p><button type="submit">Išsaugoti</button> <a href="<%= backUrl %>">Atšaukti</a></p>
+</form>
+<%- include('../partials/footer') %>

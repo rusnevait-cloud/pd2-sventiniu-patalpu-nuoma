@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<h1>Šalinti naudotoją</h1>
+<p>Ar tikrai norite negrįžtamai pašalinti <strong><%= target.full_name %></strong> (<%= target.email %>, <%= target.role %>)?</p>
+<% if (venues > 0 || bookings > 0) { %>
+  <p><strong>Šis naudotojas turi <%= venues %> erdvių ir <%= bookings %> rezervacijų, todėl pašalinti nepavyks.</strong> Vietoje to galite deaktyvuoti paskyrą.</p>
+<% } %>
+<form method="post" action="/admin/users/<%= target.id %>/delete">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <input type="hidden" name="confirm" value="yes">
+  <button type="submit">Taip, šalinti</button> <a href="/admin/users">Atšaukti</a>
+</form>
+<%- include('../partials/footer') %>

@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+<h1>Registracija</h1>
+<form method="post" action="/register">
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  <p><label>Vardas ir pavardė<br><input name="full_name" value="<%= values.full_name || '' %>" required maxlength="100"></label>
+    <% if (errors.full_name) { %><br><strong><%= errors.full_name %></strong><% } %></p>
+  <p><label>El. paštas<br><input type="email" name="email" value="<%= values.email || '' %>" required maxlength="254"></label>
+    <% if (errors.email) { %><br><strong><%= errors.email %></strong><% } %></p>
+  <p><label>Telefonas (nebūtina)<br><input name="phone" value="<%= values.phone || '' %>" maxlength="20"></label>
+    <% if (errors.phone) { %><br><strong><%= errors.phone %></strong><% } %></p>
+  <p><label>Aš esu<br>
+    <select name="role">
+      <option value="customer" <%= (values.role || 'customer') === 'customer' ? 'selected' : '' %>>Klientas (nuomojuosi erdves)</option>
+      <option value="owner" <%= values.role === 'owner' ? 'selected' : '' %>>Savininkas (nuomoju erdves)</option>
+    </select></label>
+    <% if (errors.role) { %><br><strong><%= errors.role %></strong><% } %></p>
+  <p><label>Slaptažodis (min. 10 simbolių)<br><input type="password" name="password" required minlength="10" maxlength="128"></label>
+    <% if (errors.password) { %><br><strong><%= errors.password %></strong><% } %></p>
+  <p><label>Pakartokite slaptažodį<br><input type="password" name="password_confirm" required maxlength="128"></label>
+    <% if (errors.password_confirm) { %><br><strong><%= errors.password_confirm %></strong><% } %></p>
+  <button type="submit">Registruotis</button>
+</form>
+<%- include('partials/footer') %>

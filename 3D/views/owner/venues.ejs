@@ -1,0 +1,18 @@
+<%- include('../partials/header') %>
+<h1>Mano erdvės</h1>
+<p><a href="/owner/venues/new">+ Nauja erdvė</a></p>
+<table border="1" cellpadding="4">
+  <tr><th>Pavadinimas</th><th>Miestas</th><th>Kategorija</th><th>Talpa</th><th>Kaina/val.</th><th>Būsena</th><th>Rezervacijos</th><th>Veiksmai</th></tr>
+  <% venues.forEach(v => { %>
+  <tr>
+    <td><a href="/venues/<%= v.id %>"><%= v.name %></a></td>
+    <td><%= v.city %></td><td><%= v.category_name %></td><td><%= v.capacity %></td>
+    <td><%= eur(v.price_per_hour_cents) %></td>
+    <td><%= v.is_published ? 'Publikuota' : 'Laukia patvirtinimo' %></td>
+    <td><%= v.booking_count %></td>
+    <td><a href="/owner/venues/<%= v.id %>/edit">Redaguoti</a> | <a href="/owner/venues/<%= v.id %>/delete">Šalinti</a></td>
+  </tr>
+  <% }) %>
+</table>
+<% if (!venues.length) { %><p>Erdvių dar neturite.</p><% } %>
+<%- include('../partials/footer') %>

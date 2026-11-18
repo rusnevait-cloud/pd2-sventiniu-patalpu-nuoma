@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+<h1><%= venue.name %></h1>
+<% if (!venue.is_published) { %><p><em>Ši erdvė dar nepublikuota (matote tik jūs).</em></p><% } %>
+<p><%= venue.category_name %> · <%= venue.city %> · iki <%= venue.capacity %> svečių · <%= eur(venue.price_per_hour_cents) %>/val.</p>
+<p>Savininkas: <%= venue.owner_name %></p>
+<p><%= venue.description || '' %></p>
+<h2>Patogumai</h2>
+<% if (amenities.length) { %><ul><% amenities.forEach(a => { %><li><%= a.name %></li><% }) %></ul><% } else { %><p>Nenurodyta.</p><% } %>
+<h2>Atsiliepimai</h2>
+<% if (reviews.length) { reviews.forEach(r => { %>
+  <p><strong><%= r.rating %>/5</strong> – <%= r.full_name %>: <%= r.comment || '' %></p>
+<% }) } else { %><p>Atsiliepimų dar nėra.</p><% } %>
+<%- include('partials/footer') %>
