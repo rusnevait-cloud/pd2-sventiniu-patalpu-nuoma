@@ -1,28 +1,69 @@
 <%- include('partials/header') %>
-<h1>Erdvės</h1>
-<form method="get" action="/venues">
-  <input name="q" placeholder="Pavadinimas" value="<%= filters.q %>" maxlength="60">
-  <select name="city">
-    <option value="">Visi miestai</option>
-    <% cities.forEach(c => { %><option value="<%= c %>" <%= filters.city === c ? 'selected' : '' %>><%= c %></option><% }) %>
-  </select>
-  <select name="category">
-    <option value="">Visos kategorijos</option>
-    <% categories.forEach(c => { %><option value="<%= c.id %>" <%= String(filters.category) === String(c.id) ? 'selected' : '' %>><%= c.name %></option><% }) %>
-  </select>
-  <input type="number" name="min_capacity" min="1" max="10000" placeholder="Min. talpa" value="<%= filters.min_capacity %>">
-  <button type="submit">Filtruoti</button>
-</form>
-<p>Rasta erdvių: <%= venues.length %></p>
-<table border="1" cellpadding="4">
-  <tr><th>Pavadinimas</th><th>Miestas</th><th>Kategorija</th><th>Talpa</th><th>Kaina/val.</th><th>Įvertinimas</th></tr>
-  <% venues.forEach(v => { %>
-  <tr>
-    <td><a href="/venues/<%= v.id %>"><%= v.name %></a></td>
-    <td><%= v.city %></td><td><%= v.category_name %></td><td><%= v.capacity %></td>
-    <td><%= eur(v.price_per_hour_cents) %></td>
-    <td><%= v.avg_rating ? v.avg_rating.toFixed(1) + ' (' + v.review_count + ')' : '–' %></td>
-  </tr>
-  <% }) %>
-</table>
+
+<section class="venues-section">
+  <div class="container">
+    <div class="venues-heading">
+      <h1>Erdvės</h1>
+      <p>Raskite erdvę šventei ar renginiui pagal miestą, kategoriją ir talpą.</p>
+    </div>
+
+    <div class="venues-filter-bar">
+      <form method="get" action="/venues" class="filter-inline-form">
+        <input name="q" placeholder="Pavadinimas" value="<%= filters.q %>" maxlength="60">
+        <select name="city">
+          <option value="">Visi miestai</option>
+          <% cities.forEach(c => { %>
+            <option value="<%= c %>" <%= filters.city === c ? 'selected' : '' %>><%= c %></option>
+          <% }) %>
+        </select>
+        <select name="category">
+          <option value="">Visos kategorijos</option>
+          <% categories.forEach(c => { %>
+            <option value="<%= c.id %>" <%= String(filters.category) === String(c.id) ? 'selected' : '' %>><%= c.name %></option>
+          <% }) %>
+        </select>
+        <input type="number" name="min_capacity" min="1" max="10000" placeholder="Min. talpa" value="<%= filters.min_capacity %>">
+        <button type="submit" class="btn btn-primary">Filtruoti</button>
+      </form>
+    </div>
+
+    <div class="results-header">
+      <p><strong>Rasta erdvių:</strong> <%= venues.length %></p>
+    </div>
+
+    <% if (venues.length === 0) { %>
+      <div class="empty-state">
+        <p>Pagal pasirinktus filtrus erdvių nerasta. Pabandykite pakeisti paieškos kriterijus.</p>
+      </div>
+    <% } else { %>
+      <div class="table-wrap">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Pavadinimas</th>
+              <th>Miestas</th>
+              <th>Kategorija</th>
+              <th>Talpa</th>
+              <th>Kaina/val.</th>
+              <th>Įvertinimas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% venues.forEach(v => { %>
+              <tr>
+                <td><a href="/venues/<%= v.id %>"><strong><%= v.name %></strong></a></td>
+                <td><%= v.city %></td>
+                <td><%= v.category_name %></td>
+                <td><%= v.capacity %></td>
+                <td class="venue-price"><%= eur(v.price_per_hour_cents) %></td>
+                <td><%= v.avg_rating ? v.avg_rating.toFixed(1) + ' (' + v.review_count + ')' : '–' %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  </div>
+</section>
+
 <%- include('partials/footer') %>

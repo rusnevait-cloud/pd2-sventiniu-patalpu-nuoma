@@ -1,14 +1,36 @@
-
 /* BENDRI NUSTATYMAI */
 
 * {
     box-sizing: border-box;
 }
+
 body {
     margin: 0;
     font-family: "DM Sans", sans-serif;
     background-color: #F6F1EA;
     color: #231F20;
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main,
+.page-main,
+section.venues-section {
+    flex:1 0 auto;
+}
+
+main{
+    flex: 1 0 auto;
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 25px 0;
+    background-color: #231F20;
+    color: #D5CCC2;
+    text-align: center;
 }
 
 a {
@@ -16,8 +38,13 @@ a {
     color: inherit;
 }
 
-button {
+button,
+input,
+select {
     font-family: inherit;
+}
+
+button {
     cursor: pointer;
 }
 
@@ -27,23 +54,35 @@ button {
     margin: 0 auto;
 }
 
+/* KONTEINERIO KORTELĖS */
 
-/* ANTRAŠTĖ */
+.container-card {
+    background-color: #FFFFFF;
+    border: 1px solid #E3DAD0;
+    border-radius: 22px;
+    padding: 24px;
+    box-shadow: 0 6px 20px rgba(35, 31, 32, 0.04);
+}
+
+
+/* ANTRAŠTĖ IR NAVIGACIJA */
 
 .site-header {
     background-color: #FFFFFF;
-    padding: 20px 0;
+    padding: 18px 0;
     border-bottom: 1px solid #E3DAD0;
 }
 
 .nav-wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 24px 36px;
 }
 
 .brand {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 10px;
 }
@@ -52,49 +91,89 @@ button {
     background-color: #C85A32;
     color: #FFFFFF;
     padding: 10px 14px;
-    border-radius: 8px;
+    border-radius: 10px;
     font-size: 22px;
     font-weight: bold;
+    line-height: 1;
 }
 
 .brand-name {
     font-size: 20px;
     font-weight: bold;
+    color: #231F20;
 }
 
 .main-nav {
     display: flex;
-    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
 }
 
 .main-nav a {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 6px 10px;
     color: #57514E;
     font-size: 15px;
+    font-weight: 500;
+    border-radius: 999px;
+    transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 .main-nav a:hover {
     color: #C85A32;
+    background-color: #F6F1EA;
+}
+
+.main-nav .btn,
+.main-nav .btn-primary {
+    min-height: 42px;
+    padding: 10px 20px;
+    border-radius: 999px;
 }
 
 
 /* MYGTUKAI */
 
 .btn {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     padding: 12px 22px;
     border: none;
-    border-radius: 6px;
+    border-radius: 999px;
     font-size: 15px;
     font-weight: bold;
+    line-height: 1.2;
+    transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-.btn-primary {
+.btn-primary,
+a.btn-primary,
+.btn-browse,
+.hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 999px;
     background-color: #C85A32;
     color: #FFFFFF;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 1.2;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+a.btn-primary:hover,
+.btn-browse:hover,
+.hero-cta:hover {
     background-color: #A84623;
+    color: #FFFFFF;
 }
 
 .btn-secondary {
@@ -119,9 +198,12 @@ button {
     max-width: 750px;
     margin: 0 auto 20px;
     font-size: 48px;
+    line-height: 1.15;
 }
 
 .hero p {
+    max-width: 660px;
+    margin: 0 auto 24px;
     color: #57514E;
     font-size: 18px;
 }
@@ -146,9 +228,11 @@ button {
 
 .search-form input,
 .search-form select {
-    padding: 13px;
+    padding: 12px 20px;
     border: 1px solid #E3DAD0;
-    border-radius: 6px;
+    border-radius: 999px;
+    background-color: #FFFFFF;
+    color: #231F20;
     font-size: 14px;
 }
 
@@ -166,10 +250,13 @@ section {
 
 .section-heading h2 {
     font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 
 .section-heading p {
     color: #57514E;
+    margin: 0;
 }
 
 
@@ -183,20 +270,22 @@ section {
 }
 
 .category-chip {
-    padding: 15px 25px;
+    padding: 13px 24px;
     background-color: #FFFFFF;
     border: 1px solid #E3DAD0;
-    border-radius: 30px;
+    border-radius: 999px;
     color: #231F20;
+    transition: background-color 0.15s ease, color 0.15s ease;
 }
 
 .category-chip:hover {
     background-color: #C85A32;
+    border-color: #C85A32;
     color: #FFFFFF;
 }
 
 
-/* PATALPŲ KORTELĖS */
+/* PATALPŲ KORTELĖS (KONTEINERIAI SU OVALIAIS KRAŠTAIS) */
 
 .venue-grid {
     display: grid;
@@ -205,30 +294,46 @@ section {
 }
 
 .venue-card {
+    display: flex;
+    flex-direction: column;
     background-color: #FFFFFF;
-    border-radius: 10px;
+    border-radius: 22px;
     overflow: hidden;
     border: 1px solid #E3DAD0;
+    box-shadow: 0 6px 20px rgba(35, 31, 32, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.venue-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(35, 31, 32, 0.08);
 }
 
 .venue-card img {
     width: 100%;
     height: 220px;
     object-fit: cover;
+    display: block;
 }
 
 .venue-card-content {
-    padding: 20px;
+    padding: 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .venue-card h3 {
     margin-top: 0;
+    margin-bottom: 8px;
     font-size: 20px;
 }
 
 .venue-card p {
     color: #57514E;
     font-size: 14px;
+    margin-top: 0;
 }
 
 .venue-price {
@@ -286,7 +391,8 @@ section {
     padding: 35px;
     background-color: #FFFFFF;
     border: 1px solid #E3DAD0;
-    border-radius: 10px;
+    border-radius: 22px;
+    box-shadow: 0 6px 20px rgba(35, 31, 32, 0.04);
 }
 
 .login-box h1,
@@ -318,10 +424,11 @@ section {
 .login-field input,
 .register-field input {
     width: 100%;
-    padding: 13px;
+    padding: 12px 18px;
     border: 1px solid #E3DAD0;
-    border-radius: 6px;
+    border-radius: 999px;
     font-size: 15px;
+    background-color: #FFFFFF;
 }
 
 .login-button,
@@ -346,19 +453,103 @@ section {
 }
 
 
-/* PATALPŲ SĄRAŠO PUSLAPIS */
+/* PATALPŲ SĄRAŠO PUSLAPIS IR OVALŪS FILTRAI */
 
 .venues-heading {
-    margin-bottom: 35px;
+    margin-bottom: 28px;
 }
 
 .venues-heading h1 {
     font-size: 38px;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
 .venues-heading p {
     color: #57514E;
+    margin: 0;
+}
+
+/* Viršutinė arba šoninė filtrų juosta su ovaliais kraštais */
+.venues-filter-bar,
+.venues-filters form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    margin-bottom: 24px;
+    background-color: #FFFFFF;
+    border: 1px solid #E3DAD0;
+    border-radius: 24px;
+    box-shadow: 0 4px 16px rgba(35, 31, 32, 0.04);
+}
+
+.filter-inline-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.filter-inline-form input,
+.filter-inline-form select {
+    flex: 1 1 150px;
+    min-width: 140px;
+}
+
+.filter-inline-form button {
+    flex: 0 0 auto;
+}
+
+.data-table td a {
+    color: #231F20;
+}
+
+.data-table td a:hover {
+    color: #C85A32;
+}
+
+.venues-filter-bar input,
+.venues-filter-bar select,
+.venues-filters input,
+.venues-filters select {
+    padding: 11px 18px;
+    border: 1px solid #E3DAD0;
+    border-radius: 999px;
+    background-color: #F6F1EA;
+    color: #231F20;
+    font-size: 14px;
+}
+
+.venues-filter-bar input:focus,
+.venues-filter-bar select:focus,
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #C85A32;
+    background-color: #FFFFFF;
+}
+
+.venues-filter-bar button,
+.venues-filter-bar .btn,
+.venues-filters button,
+.venues-filters .btn {
+    padding: 11px 22px;
+    border: none;
+    border-radius: 999px;
+    background-color: #C85A32;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.venues-filter-bar button:hover,
+.venues-filter-bar .btn:hover,
+.venues-filters button:hover,
+.venues-filters .btn:hover {
+    background-color: #A84623;
 }
 
 
@@ -366,7 +557,7 @@ section {
 
 .venues-layout {
     display: grid;
-    grid-template-columns: 260px 1fr;
+    grid-template-columns: 270px 1fr;
     gap: 30px;
     align-items: start;
 }
@@ -375,7 +566,8 @@ section {
     padding: 25px;
     background-color: #FFFFFF;
     border: 1px solid #E3DAD0;
-    border-radius: 10px;
+    border-radius: 22px;
+    box-shadow: 0 6px 20px rgba(35, 31, 32, 0.04);
 }
 
 .filter-box h2 {
@@ -383,7 +575,7 @@ section {
 }
 
 .filter-group {
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 .filter-group label,
@@ -394,16 +586,19 @@ section {
 }
 
 .filter-group select,
-.filter-group input[type="number"] {
+.filter-group input[type="number"],
+.filter-group input[type="text"] {
     width: 100%;
-    padding: 11px;
+    padding: 11px 16px;
     border: 1px solid #E3DAD0;
-    border-radius: 6px;
-    background-color: #FFFFFF;
+    border-radius: 999px;
+    background-color: #F6F1EA;
+    color: #231F20;
 }
 
 .filter-group input[type="range"] {
     width: 100%;
+    accent-color: #C85A32;
 }
 
 .filter-group p {
@@ -421,6 +616,60 @@ section {
 .filter-box button {
     width: 100%;
     margin-top: 10px;
+    border-radius: 999px;
+}
+
+
+/* LENTELĖ (PATOBULINTA) */
+
+.table-wrap {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #FFFFFF;
+    border: 1px solid #E3DAD0;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(35, 31, 32, 0.04);
+}
+
+table,
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #FFFFFF;
+    font-size: 14px;
+}
+
+table thead,
+.data-table thead {
+    background-color: #F6F1EA;
+}
+
+table th,
+.data-table th {
+    padding: 14px 18px;
+    text-align: left;
+    font-weight: bold;
+    color: #231F20;
+    border-bottom: 2px solid #E3DAD0;
+    white-space: nowrap;
+}
+
+table td,
+.data-table td {
+    padding: 13px 18px;
+    color: #57514E;
+    border-bottom: 1px solid #EFE9E1;
+    vertical-align: middle;
+}
+
+table tbody tr:last-child td,
+.data-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+table tbody tr:hover,
+.data-table tbody tr:hover {
+    background-color: #FAF7F3;
 }
 
 
@@ -451,9 +700,10 @@ section {
 }
 
 .sort-box select {
-    padding: 10px;
+    padding: 10px 16px;
     border: 1px solid #E3DAD0;
-    border-radius: 6px;
+    border-radius: 999px;
+    background-color: #FFFFFF;
 }
 
 
@@ -463,7 +713,8 @@ section {
     padding: 40px;
     text-align: center;
     background-color: #FFFFFF;
-    border-radius: 10px;
+    border: 1px solid #E3DAD0;
+    border-radius: 22px;
 }
 
 .empty-state p {
@@ -471,19 +722,47 @@ section {
 }
 
 
+/* PAGALBINĖS KLASĖS IR PRANEŠIMAI */
+
+.inline-form {
+    display: inline;
+    margin: 0;
+}
+
+.user-info {
+    color: #57514E;
+    font-size: 14px;
+}
+
+.flash {
+    padding: 12px 18px;
+    margin: 20px 0;
+    border-radius: 16px;
+}
+
+.flash-ok {
+    background-color: #E6F4EA;
+    color: #1B5E20;
+}
+
+.flash-error {
+    background-color: #FDECEA;
+    color: #8C1D18;
+}
+
+
 /* PRITAIKYMAS TELEFONAMS */
 
 @media (max-width: 800px) {
-
     .nav-wrap {
         flex-direction: column;
-        gap: 20px;
+        gap: 16px;
     }
 
     .main-nav {
         flex-wrap: wrap;
         justify-content: center;
-        gap: 15px;
+        gap: 12px;
     }
 
     .hero h1 {
@@ -500,13 +779,14 @@ section {
 }
 
 @media (max-width: 550px) {
-
     .venue-grid {
         grid-template-columns: 1fr;
     }
+
     .hero h1 {
         font-size: 28px;
     }
+
     .login-box,
     .register-box {
         padding: 25px;
@@ -516,11 +796,35 @@ section {
         flex-direction: column;
         align-items: flex-start;
     }
-
 }
 
-.inline-form { display: inline; margin: 0; }
-.user-info { color: #57514E; font-size: 14px; }
-.flash { padding: 12px 16px; margin: 20px 0; border-radius: 6px; }
-.flash-ok { background-color: #E6F4EA; }
-.flash-error { background-color: #FDECEA; color: #8C1D18; }
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: "DM Sans", sans-serif;
+    background-color: #F6F1EA;
+    color: #231F20;
+    line-height: 1.5;
+}
+
+body > main {
+    flex: 1 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.site-footer {
+    margin-top: auto;
+    padding: 25px 0;
+    background-color: #231F20;
+    color: #D5CCC2;
+    text-align: center;
+}
