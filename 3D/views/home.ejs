@@ -1,5 +1,38 @@
 <%- include('partials/header') %>
-<h1>VenueBook</h1>
-<p>Erdvių renginiams nuomos sistema.</p>
-<p><a href="/venues" class="btn btn-primary">Peržiūrėti erdves</a></p>
+<section class="hero hero-image">
+  <div class="container">
+    <h1>Rask erdvę tobuliems prisiminimams</h1>
+    <p>Vestuvėms, konferencijoms, gimtadieniams ir koncertams.</p>
+    <p><a href="/venues" class="btn btn-primary">Peržiūrėti erdves</a></p>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-heading">
+      <h2>Populiarios kategorijos</h2>
+      <p>Pasirinkite renginio tipą</p>
+    </div>
+    <div class="category-list">
+      <a href="/venues" class="category-chip">Vestuvės</a>
+      <a href="/venues" class="category-chip">Konferencijos</a>
+      <a href="/venues" class="category-chip">Gimtadieniai</a>
+      <a href="/venues" class="category-chip">Koncertai</a>
+    </div>
+  </div>
+</section>
+
+<section class="about-section">
+  <div class="container">
+    <div class="section-heading">
+      <h2>Kaip tai veikia</h2>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="step-number">1</span><h3>Susiraskite</h3><p>Filtruokite erdves pagal miestą, tipą ir talpą.</p></div>
+      <div class="step"><span class="step-number">2</span><h3>Rezervuokite</h3><p>Pasirinkite datą ir laiką.</p></div>
+      <div class="step"><span class="step-number">3</span><h3>Šventėkite</h3><p>Savininkas patvirtina, o jūs ruošiatės renginiui.</p></div>
+    </div>
+  </div>
+</section>
+
 <%- include('partials/footer') %>

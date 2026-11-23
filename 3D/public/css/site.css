@@ -1,11 +1,17 @@
+
 /* BENDRI NUSTATYMAI */
 
 * {
     box-sizing: border-box;
 }
 
+html,
 body {
+    height: 100%;
     margin: 0;
+}
+
+body {
     font-family: "DM Sans", sans-serif;
     background-color: #F6F1EA;
     color: #231F20;
@@ -18,19 +24,14 @@ body {
 main,
 .page-main,
 section.venues-section {
-    flex:1 0 auto;
-}
-
-main{
     flex: 1 0 auto;
 }
 
-.site-footer {
-    margin-top: auto;
-    padding: 25px 0;
-    background-color: #231F20;
-    color: #D5CCC2;
-    text-align: center;
+body > main {
+    flex: 1 0 auto;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 a {
@@ -53,6 +54,7 @@ button {
     max-width: 1200px;
     margin: 0 auto;
 }
+
 
 /* KONTEINERIO KORTELĖS */
 
@@ -285,7 +287,7 @@ section {
 }
 
 
-/* PATALPŲ KORTELĖS (KONTEINERIAI SU OVALIAIS KRAŠTAIS) */
+/* PATALPŲ KORTELĖS */
 
 .venue-grid {
     display: grid;
@@ -348,6 +350,9 @@ section {
 .about-section {
     background-color: #FFFFFF;
     text-align: center;
+    border-radius: 16px;
+    padding: 50px 40px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
 
 .about-section p {
@@ -358,9 +363,39 @@ section {
 }
 
 
+/* KAIP TAI VEIKIA */
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 30px;
+    text-align: center;
+}
+
+.step {
+    padding: 20px;
+}
+
+.step-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background-color: #C85A32;
+    color: #FFFFFF;
+    font-weight: bold;
+    font-size: 18px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
+
+
 /* PORAŠTĖ */
 
 .site-footer {
+    margin-top: auto;
     padding: 25px 0;
     background-color: #231F20;
     color: #D5CCC2;
@@ -453,7 +488,7 @@ section {
 }
 
 
-/* PATALPŲ SĄRAŠO PUSLAPIS IR OVALŪS FILTRAI */
+/* PATALPŲ SĄRAŠO PUSLAPIS */
 
 .venues-heading {
     margin-bottom: 28px;
@@ -470,7 +505,9 @@ section {
     margin: 0;
 }
 
-/* Viršutinė arba šoninė filtrų juosta su ovaliais kraštais */
+
+/* PATALPŲ FILTRAI */
+
 .venues-filter-bar,
 .venues-filters form {
     display: flex;
@@ -501,14 +538,6 @@ section {
 
 .filter-inline-form button {
     flex: 0 0 auto;
-}
-
-.data-table td a {
-    color: #231F20;
-}
-
-.data-table td a:hover {
-    color: #C85A32;
 }
 
 .venues-filter-bar input,
@@ -620,7 +649,7 @@ section {
 }
 
 
-/* LENTELĖ (PATOBULINTA) */
+/* LENTELĖS */
 
 .table-wrap {
     width: 100%;
@@ -670,6 +699,14 @@ table tbody tr:last-child td,
 table tbody tr:hover,
 .data-table tbody tr:hover {
     background-color: #FAF7F3;
+}
+
+.data-table td a {
+    color: #231F20;
+}
+
+.data-table td a:hover {
+    color: #C85A32;
 }
 
 
@@ -751,9 +788,10 @@ table tbody tr:hover,
 }
 
 
-/* PRITAIKYMAS TELEFONAMS */
+/* PRITAIKYMAS PLANŠETĖMS */
 
 @media (max-width: 800px) {
+
     .nav-wrap {
         flex-direction: column;
         gap: 16px;
@@ -776,9 +814,14 @@ table tbody tr:hover,
     .venues-layout {
         grid-template-columns: 1fr;
     }
+
 }
 
+
+/* PRITAIKYMAS TELEFONAMS */
+
 @media (max-width: 550px) {
+
     .venue-grid {
         grid-template-columns: 1fr;
     }
@@ -796,35 +839,13 @@ table tbody tr:hover,
         flex-direction: column;
         align-items: flex-start;
     }
-}
 
-html,
-body {
-    height: 100%;
-    margin: 0;
-}
+    .steps {
+        grid-template-columns: 1fr;
+    }
 
-body {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    font-family: "DM Sans", sans-serif;
-    background-color: #F6F1EA;
-    color: #231F20;
-    line-height: 1.5;
-}
+    .about-section {
+        padding: 35px 20px;
+    }
 
-body > main {
-    flex: 1 0 auto;
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.site-footer {
-    margin-top: auto;
-    padding: 25px 0;
-    background-color: #231F20;
-    color: #D5CCC2;
-    text-align: center;
 }
